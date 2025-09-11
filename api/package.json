@@ -1,0 +1,27 @@
+{
+  "name": "post-ai-api",
+  "version": "1.0.0",
+  "description": "API do projeto de posts sugeridos por IA",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon server.js"
+  },
+  "keywords": [],
+  "author": "Eduardo Toshio",
+  "license": "ISC",
+  "dependencies": {
+    "@langchain/community": "^0.3.55",
+    "@langchain/core": "^0.3.75",
+    "@langchain/langgraph": "^0.4.9",
+    "@langchain/openai": "^0.6.11",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.2",
+    "express": "^5.1.0",
+    "langchain": "^0.3.33",
+    "openai": "^5.20.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}

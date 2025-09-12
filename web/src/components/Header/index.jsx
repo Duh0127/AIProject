@@ -9,13 +9,16 @@ export default function Header() {
 
     return (
         <S.Container>
-            <S.Logo src={Logo} />
-            <Button
+            <S.Logo
+                src={Logo}
+                onClick={() => navigate('/')}
+            />
+            {/* <Button
                 variant='outline'
                 onClick={() => navigate('/competitors-analyzer')}
             >
                 {Icons({ name: "user" })} Analisar Concorrencia
-            </Button>
+            </Button> */}
         </S.Container>
     )
 }

@@ -61,7 +61,10 @@ export default function Profile() {
             </S.SideBar>
 
             <S.PostsContainer>
-                <Competitors message={searchResult} />
+                <Competitors
+                    loading={loading}
+                    message={searchResult}
+                />
             </S.PostsContainer>
         </S.Container>
     )

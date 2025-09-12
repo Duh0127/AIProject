@@ -2,38 +2,7 @@ const { HumanMessage } = require("@langchain/core/messages");
 const { agent } = require("../services/agent.service");
 const { generatePrompt } = require("../services/prompt.service");
 const { companyTool, competitorTool } = require("../services/tools.service");
-const { extractJsonFromText, safeParseJson } = require("../utils/json");
-
-
-// exports.findCompetitors = async (req, res) => {
-//     const { niche, company, threadId } = req.body;
-//     if (!niche || !company) {
-//         return res.status(400).json({ error: "O nicho e empresa sao obrigatórios" });
-//     }
-
-//     try {
-//         const threadIdFallback = threadId ?? `${Date.now()}-${Math.floor(Math.random() * 1000000)}`;
-
-//         const companyDataRaw = await companyTool.func(company);
-
-//         return res.json({ companyDataRaw });
-
-//         const prompt = await generatePrompt({ niche, company });
-//         const newMessage = new HumanMessage(prompt);
-
-//         const response = await agent.invoke(
-//             { messages: [newMessage] },
-//             { configurable: { thread_id: threadIdFallback } }
-//         )
-
-//         let content = response?.messages[response.messages.length - 1]?.content;
-//         content = typeof content === "string" ? JSON.parse(content) : content;
-//         res.status(200).json({ content });
-//     } catch (error) {
-//         console.error("Erro ao analisar concorrentes:", error);
-//         res.status(500).json({ error: error.message });
-//     }
-// }
+const { safeParseJson } = require("../utils/json");
 
 exports.findCompetitors = async (req, res) => {
     const { company, niche, threadId } = req.body;
@@ -92,8 +61,8 @@ exports.findCompetitors = async (req, res) => {
         const last = response.messages[response.messages.length - 1];
         let rawContent = last?.content;
 
-        const parsed = JSON.parse(rawContent);
-        return res.status(200).json(parsed);
+        // const parsed = JSON.parse(rawContent);
+        return res.status(200).json({ message: "Analise feita", response: rawContent });
     } catch (err) {
         console.error("Erro ao analisar concorrentes:", err);
         return res.status(500).json({ error: err.message });
